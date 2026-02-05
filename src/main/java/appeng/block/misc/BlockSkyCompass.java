@@ -73,9 +73,11 @@ public class BlockSkyCompass extends AEBaseTileBlock implements ICustomCollision
     @Override
     public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
         final TileSkyCompass sc = this.getTileEntity(world, pos);
-        final EnumFacing forward = sc.getForward();
-        if (!this.canPlaceAt(world, pos, forward.getOpposite())) {
-            this.dropTorch(world, pos);
+        if (sc != null) {
+            final EnumFacing forward = sc.getForward();
+            if (!this.canPlaceAt(world, pos, forward.getOpposite())) {
+                this.dropTorch(world, pos);
+            }
         }
     }
 
