@@ -893,7 +893,7 @@ tasks.register('generateChangelog') {
                 .collect { ['--', it] }).flatten())
 
         if (changelog) {
-            changelog = "Changes since ${lastTag}:\n${{("\n" + changelog).replaceAll("\n", "\n* ")}}"
+            changelog = "Changes since ${lastTag}:\n" + ("\n" + changelog).replaceAll("\n", "\n* ")
         }
         def f = getFile('build/changelog.md')
         changelog = changelog ?: 'There have been no changes.'
